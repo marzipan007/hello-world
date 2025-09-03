@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>¿Cuántos días faltan para ver a María?</title>
+ <style>
+   body {
+     background: linear-gradient(135deg, #e53935 0%, #fff 50%, #1e88e5 100%);
+     font-family: 'Helvetica', Arial, sans-serif;
+     color: #000;
+     font-weight: bold;
+     margin: 0;
+     padding: 0;
+     min-height: 100vh;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+   }
+   h1 {
+     font-size: 2.5em;
+     margin: 0.5em 0;
+     text-align: center;
+   }
+   h2 {
+     font-size: 2em;
+     margin: 0.5em 0;
+   }
+   p {
+     font-size: 1.2em;
+     margin: 0.3em 0;
+     text-align: center;
+   }
+   span {
+     color: #000;
+     font-weight: bold;
+   }
+   @media (max-width: 600px) {
+     h1 {
+       font-size: 1.5em;
+     }
+     h2 {
+       font-size: 1.2em;
+     }
+     p {
+       font-size: 1em;
+     }
+     body {
+       padding: 10px;
+     }
+   }
+ </style>
+</head>
+<body>
+ <h1>Countdown para ver a María</h1>
+ <p>Faltan:</p>
+ <h2><span id="countdown"></span></h2>
+ <p> para ver a Mar</p>
+ <script>
+   // Set your target date here (YYYY-MM-DD format)
+   const targetDate = new Date('2025-12-01T00:00:00');
+   const countdownEl = document.getElementById('countdown');
+
+   function updateCountdown() {
+     const now = new Date();
+     const diff = targetDate - now;
+
+     if (diff <= 0) {
+       countdownEl.textContent = "¡Ya puedes ver a Mar!";
+       return;
+     }
+
+     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+     const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+     const minutes = Math.floor((diff / (1000 * 60)) % 60);
+     const seconds = Math.floor((diff / 1000) % 60);
+
+     countdownEl.textContent = `${days} días ${hours.toString().padStart(2, '0')}:${minutes
+       .toString()
+       .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+   }
+
+   updateCountdown();
+   setInterval(updateCountdown, 1000);
+ </script>
+</body>
+</html>
